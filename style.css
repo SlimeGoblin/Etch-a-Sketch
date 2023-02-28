@@ -1,0 +1,40 @@
+
+
+
+
+#gridContainer{
+    display: grid;
+
+    grid-template-rows: repeat(16, 40px);
+
+    grid-template-columns: repeat(16, 40px);
+
+    justify-content: center;
+
+    padding-top: 10px;
+
+    padding-bottom: 10px;
+
+    border: 2px solid black;
+
+
+}
+
+.boxClass {
+    border: 2px solid black;
+}
+
+
+.colorBlack{
+    background-color: black; 
+}
+
+
+.colorYellow{
+    background-color: yellow;
+}
+
+.colorWhite{
+    background-color: white;
+}
+
