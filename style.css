@@ -1,24 +1,83 @@
 
 
 
+.slidecontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Width of the outside container */
+  }
+  
+  /* The slider itself */
+  .slider {
+
+    appearance: none;
+    width: 200px; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+  
+  /* Mouse-over effects */
+  .slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #04AA6D; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #04AA6D; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+.etchSketch{
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
 
 #gridContainer{
     display: grid;
 
-    grid-template-rows: repeat(16, 40px);
+    
+    grid-template-columns: repeat(var(--size),1fr);
 
-    grid-template-columns: repeat(16, 40px);
 
-    justify-content: center;
+    width: 700px;
 
-    padding-top: 10px;
-
-    padding-bottom: 10px;
-
-    border: 2px solid black;
-
+    height: 700px;
 
 }
+
+.buttonContainer{
+    display: flex;
+    gap: 60px;
+    padding: 40px;
+    align-items: center;
+    width: 100px;
+    height: 35px;
+    justify-content: center;
+}
+
+
 
 .boxClass {
     border: 2px solid black;
@@ -37,4 +96,6 @@
 .colorWhite{
     background-color: white;
 }
+
+
 

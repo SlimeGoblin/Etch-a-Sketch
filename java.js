@@ -1,154 +1,179 @@
-/* TODO:
-
-1) Make it draw when on Hover
-
-2) Chose Your Own Color
-
-3) Random Color
-
-4) Change amount of divs (slider)
-
-
-*/
 
 
 
-/* My Query Selectors (Grid Container (and Buttons?) */
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = `${slider.value} x ${slider.value}`; // Display the default slider value
 
-const makeDivs = document.querySelector("#gridContainer")
+
+var borderOn = true
+var gridSize = 16
+let root = document.documentElement
+root.style.setProperty('--size', gridSize)
+
+// Update the current slider value (each time you drag the slider handle) and update grid
+slider.oninput = function() {
+
+  output.innerHTML = `${this.value} x ${this.value}`;
+  gridSize = this.value
+  let root = document.documentElement
+  root.style.setProperty('--size', gridSize)
+  blackButton.classList.remove('colorYellow')
+  eraserButton.classList.remove('colorYellow')
+  borderButton.classList.remove('colorYellow')
+  borderOn = false
+  makeGrid(gridSize);
+}
 
 
 
+
+
+var colorToggle = ''
+
+const grid = document.querySelector("#gridContainer")
 
 const blackButton = document.querySelector(".blackButton");
 
 const eraserButton = document.querySelector(".eraserButton");
 
+const borderButton = document.querySelector(".borderButton")
 
-/* Button is Yellow when in use */
+const clearButton = document.querySelector(".clearButton")
 
-blackButton.addEventListener(("click"),function(e){
-    blackButton.classList.toggle("colorYellow")
-});
-
+const rainbowButton= document.querySelector(".rainbowButton")
 
 
 
+function makeGrid(n){
 
-function makeGrid(){
 
-    /* Makes Divs */
+    grid.innerHTML = ''
 
-    for (let i = 0; i < 256; i++){
+    for (let i = 0; i < (n*n); i++){
 
             
         const newBox = document.createElement('div')
         newBox.classList.add("boxClass")
 
-        makeDivs.appendChild(newBox);
-
-
-        /* BlackButton Clicked and anyBox clicked, adds colorBlack  */
-
-        blackButton.addEventListener("click", coloringBlack)
-
-        function coloringBlack(e){
-
-        newBox.addEventListener("click", ()=> {
-
-            newBox.classList.add("colorBlack");
-        
-            });
-    
-        makeDivs.addEventListener("click",()=>{
-    
-            newBox.addEventListener("mousemove",mouseBlack)
-
-            function mouseBlack(e){
-
-                newBox.classList.add("colorBlack")
-        
-        };
-    });
-
-
-
-
-};
-
-
-/* if Eraser Button is hit */
-
-eraserButton.addEventListener("click", coloringWhite);
-
-function coloringWhite(e){
-
-
-
-    newBox.addEventListener("click", ()=> {
-
-        newBox.classList.add("colorWhite");
-    
-        });
-
-       newBox.addEventListener("mouseover",()=>{
-        newBox.classList.add("colorWhite")
-    
-    });
-
-
-};
-
-
+        grid.appendChild(newBox);
 
     }
+}
 
+makeGrid(gridSize)
+
+
+
+
+function modeBlack(){
+        colorToggle = 'black'
+        blackButton.classList.add('colorYellow');
+        eraserButton.classList.remove('colorYellow');
+
+
+        const selectorBox = document.querySelectorAll(".boxClass")
+
+
+
+            for(let i = 0; i < selectorBox.length; i++){
+                selectorBox[i].addEventListener('mousemove', () =>{
+                        selectorBox[i].classList.add('colorBlack')
+                });
+            } 
+        }    
+
+
+function randomColor(){
+    return `rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`
+   // let root = document.documentElement
+   // root.style.setProperty('--rainbow', randomColor)
+}
+
+
+function modeRainbow(){
+        eraserButton.classList.remove('colorYellow')
+        blackButton.classList.remove('colorYellow')
+        rainbowButton.classList.add('colorYellow')
+
+        colorToggle = 'rainbow'
+
+        const selectorBox = document.querySelectorAll(".boxClass")
+        for(let i = 0; i < selectorBox.length; i++){
+//create random RGB value to plug into the cssText then push to CSS and make it a class
+            
+            selectorBox[i].addEventListener('mouseover', () =>{
+                selectorBox[i].style.cssText = `background-color: ${randomColor()}`
+            });
+        } 
+    
+
+}
+
+
+
+
+
+
+function modeErase(){
+
+        colorToggle = 'erase'
+        eraserButton.classList.add('colorYellow')
+        blackButton.classList.remove('colorYellow')
+        rainbowButton.classList.remove('colorYellow')
+
+        const selectorBox = document.querySelectorAll(".boxClass")
+
+            for(let i =0 ; i< selectorBox.length; i++){
+            selectorBox[i].addEventListener('mousemove',  ()=>{
+                selectorBox[i].classList.remove('colorBlack')
+                selectorBox[i].classList.remove('colorRandom')
+            })
+                
+            }
+        }
+        
+
+function activateClear(){
+    const selectorBox = document.querySelectorAll('.boxClass')
+
+    for (let i = 0; i < selectorBox.length; i++){
+        selectorBox[i].classList.remove('colorBlack')
+        selectorBox[i].classList.remove('colorRandom')
+    }
+
+}
+
+function toggleBorder(){
+
+    const selectorBox = document.querySelectorAll(".boxClass")
+    if (borderOn){
+        borderOn = false
+        console.log(borderOn)
+        eraserButton.classList.remove('colorYellow')
+        blackButton.classList.remove('colorYellow')
+        borderButton.classList.add('colorYellow')
+    for(let i = 0; i<selectorBox.length; i++){
+        selectorBox[i].style.cssText = 'border: white'
+    }
+
+}
+    else if (!borderOn) {
+        borderOn = true
+        console.log(borderOn)
+        borderButton.classList.remove('colorYellow')
+        for(let i =0; i<selectorBox.length; i++){
+            selectorBox[i].style.cssText ='border: 2px solid black'
+    
+        }
+    }
 
 
 }
 
-makeGrid();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-  
-
-
-
-
-
-
-
-
-    
-
-
-
-
-/* Gives each div a class of Black if blah balh */
+blackButton.addEventListener('click', modeBlack)
+eraserButton.addEventListener('click',modeErase)
+borderButton.addEventListener('click',toggleBorder)
+clearButton.addEventListener('click', activateClear)
+rainbowButton.addEventListener('click', modeRainbow)
 
