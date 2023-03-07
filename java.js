@@ -1,5 +1,4 @@
-
-
+///make a change
 
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
@@ -29,7 +28,7 @@ slider.oninput = function() {
 
 
 
-var colorToggle = ''
+var color = ''
 
 const grid = document.querySelector("#gridContainer")
 
@@ -42,6 +41,18 @@ const borderButton = document.querySelector(".borderButton")
 const clearButton = document.querySelector(".clearButton")
 
 const rainbowButton= document.querySelector(".rainbowButton")
+
+
+
+function maketheboxes(){
+    const selectorBox = document.querySelectorAll(".boxClass")
+    for(let i = 0; i < selectorBox.length; i++){
+        return selectorBox[i]
+
+    }
+}
+
+maketheboxes();
 
 
 
@@ -66,22 +77,52 @@ makeGrid(gridSize)
 
 
 
+
+function colorToggle(){
+    if(blackButton.classList.contains('colorYellow')){
+         color = 'black'
+         console.log(color)
+    } else if (eraserButton.classList.contains('colorYellow')){
+        color = 'erase'
+        console.log(color)
+    } else if (rainbowButton.classList.contains('colorYellow')){
+        color = 'rainbow'
+        console.log('rainbow')
+    }
+}
+
+
+
+
 function modeBlack(){
-        colorToggle = 'black'
         blackButton.classList.add('colorYellow');
         eraserButton.classList.remove('colorYellow');
+        rainbowButton.classList.remove('colorYellow')
+        
+        colorToggle();
+        console.log(color)
+
 
 
         const selectorBox = document.querySelectorAll(".boxClass")
 
-
+            if (color === 'black'){
 
             for(let i = 0; i < selectorBox.length; i++){
+
+                selectorBox[i].removeEventListener('mouseover', () =>{
+                    selectorBox[i].style.cssText = `background-color: ${randomColor()}`
+            }); 
+
                 selectorBox[i].addEventListener('mousemove', () =>{
                         selectorBox[i].classList.add('colorBlack')
-                });
-            } 
-        }    
+                        });
+                }
+             
+        }
+    }
+
+              
 
 
 function randomColor(){
@@ -96,42 +137,52 @@ function modeRainbow(){
         blackButton.classList.remove('colorYellow')
         rainbowButton.classList.add('colorYellow')
 
-        colorToggle = 'rainbow'
+
+        colorToggle();
+        console.log(color)
 
         const selectorBox = document.querySelectorAll(".boxClass")
-        for(let i = 0; i < selectorBox.length; i++){
-//create random RGB value to plug into the cssText then push to CSS and make it a class
-            
-            selectorBox[i].addEventListener('mouseover', () =>{
-                selectorBox[i].style.cssText = `background-color: ${randomColor()}`
-            });
-        } 
-    
 
-}
+            for(let i = 0; i < selectorBox.length; i++){  
+                if (color === 'rainbow'){
+                    console.log('rainbowOn')
+                    selectorBox[i].addEventListener('mouseover', () =>{
+                    selectorBox[i].style.cssText = `background-color: ${randomColor()}`
+            }); 
 
+            } else {
+                    console.log('rainbowOff')
+                    selectorBox[i].removeEventListener('mouseover', () =>{
+                    selectorBox[i].style.cssText = `background-color: ${randomColor()}`
+            }); 
 
-
+            }
+        }
+        
+    }
 
 
 
 function modeErase(){
-
-        colorToggle = 'erase'
         eraserButton.classList.add('colorYellow')
         blackButton.classList.remove('colorYellow')
         rainbowButton.classList.remove('colorYellow')
 
+        colorToggle();
+
         const selectorBox = document.querySelectorAll(".boxClass")
+
+        if (color === 'erase'){
 
             for(let i =0 ; i< selectorBox.length; i++){
             selectorBox[i].addEventListener('mousemove',  ()=>{
                 selectorBox[i].classList.remove('colorBlack')
-                selectorBox[i].classList.remove('colorRandom')
-            })
                 
-            }
+            });
         }
+
+    }
+}
         
 
 function activateClear(){
@@ -139,7 +190,7 @@ function activateClear(){
 
     for (let i = 0; i < selectorBox.length; i++){
         selectorBox[i].classList.remove('colorBlack')
-        selectorBox[i].classList.remove('colorRandom')
+
     }
 
 }
@@ -167,8 +218,6 @@ function toggleBorder(){
     
         }
     }
-
-
 }
 
 blackButton.addEventListener('click', modeBlack)

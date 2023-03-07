@@ -88,6 +88,10 @@
     background-color: black; 
 }
 
+.colorRainbow{
+    background-color: var(--rainbow );
+}
+
 
 .colorYellow{
     background-color: yellow;
