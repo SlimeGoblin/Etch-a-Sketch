@@ -1,16 +1,21 @@
-///make a change
+//GIANT FUNCTION
+
+
+//Get Slider Input
 
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
 output.innerHTML = `${slider.value} x ${slider.value}`; // Display the default slider value
 
 
+//Grid Properties to CSS Grid and Border Toggle Variable 
+
 var borderOn = true
 var gridSize = 16
 let root = document.documentElement
 root.style.setProperty('--size', gridSize)
 
-// Update the current slider value (each time you drag the slider handle) and update grid
+// Slider into Grid Property to make new Grid Sizes
 slider.oninput = function() {
 
   output.innerHTML = `${this.value} x ${this.value}`;
@@ -25,10 +30,7 @@ slider.oninput = function() {
 }
 
 
-
-
-
-var color = ''
+// Query Selectors (HTML --> JAVASCRIPT)
 
 const grid = document.querySelector("#gridContainer")
 
@@ -43,6 +45,8 @@ const clearButton = document.querySelector(".clearButton")
 const rainbowButton= document.querySelector(".rainbowButton")
 
 
+// I have no idea why I made this
+/*
 
 function maketheboxes(){
     const selectorBox = document.querySelectorAll(".boxClass")
@@ -53,8 +57,11 @@ function maketheboxes(){
 }
 
 maketheboxes();
+*/
 
 
+//Makes the Grid Boxes based on the Grid Size Input from Slider (Default 16)
+//grid.innerHTML = '' because otherwise it will keep growing instead of starting again
 
 function makeGrid(n){
 
@@ -76,90 +83,86 @@ makeGrid(gridSize)
 
 
 
+//Color Toggles so that colorPicker knows what to chose
 
+var color = ''
 
-function colorToggle(){
-    if(blackButton.classList.contains('colorYellow')){
-         color = 'black'
-         console.log(color)
-    } else if (eraserButton.classList.contains('colorYellow')){
-        color = 'erase'
-        console.log(color)
-    } else if (rainbowButton.classList.contains('colorYellow')){
-        color = 'rainbow'
-        console.log('rainbow')
-    }
+function colorToggleBlack (){
+    color = 'black';
+    pickColor();
+}
+
+function colorToggleRainbow(){
+    color = 'rainbow'
+    pickColor();
 }
 
 
 
-
-function modeBlack(){
-        blackButton.classList.add('colorYellow');
-        eraserButton.classList.remove('colorYellow');
-        rainbowButton.classList.remove('colorYellow')
-        
-        colorToggle();
-        console.log(color)
+function pickColor(){
 
 
 
-        const selectorBox = document.querySelectorAll(".boxClass")
+    const selectorBox = document.querySelectorAll(".boxClass")
 
-            if (color === 'black'){
+    for(let i = 0; i < selectorBox.length; i++){
 
-            for(let i = 0; i < selectorBox.length; i++){
-
-                selectorBox[i].removeEventListener('mouseover', () =>{
-                    selectorBox[i].style.cssText = `background-color: ${randomColor()}`
-            }); 
-
-                selectorBox[i].addEventListener('mousemove', () =>{
-                        selectorBox[i].classList.add('colorBlack')
-                        });
-                }
-             
+        function addBlack (){
+            selectorBox[i].classList.add('colorBlack')
         }
+
+        function addRainbow(){
+            selectorBox[i].style.cssText = `background-color: ${randomColor()}`
+        }
+
+    if (color === 'black'){
+        console.log('is black')
+
+        blackButton.classList.add('colorYellow');
+
+            selectorBox[i].addEventListener('mousemove', addBlack)
+               
     }
+
+    if (color != 'black'){
+        console.log('is not black')
+
+        blackButton.classList.remove('colorYellow');
+
+            selectorBox[i].removeEventListener('mousemove', addBlack)
+            
+    }
+
+    if (color === 'rainbow'){
+        console.log('is rainbow')
+
+        rainbowButton.classList.add('colorYellow')
+
+        selectorBox[i].addEventListener('mouseover', addRainbow)
+    }
+
+    if (color != 'rainbow'){
+        console.log('is not rainbow')
+
+        rainbowButton.classList.remove('colorYellow');
+
+        selectorBox[i].removeEventListener('mouseover', addRainbow)
+    }
+}
+}
+
 
               
 
 
 function randomColor(){
-    return `rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`
-   // let root = document.documentElement
-   // root.style.setProperty('--rainbow', randomColor)
+    return `rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`      
+    //let toot = document.documentElement
+    //toot.style.setProperty('--rainbow', randomColor())  
 }
 
 
-function modeRainbow(){
-        eraserButton.classList.remove('colorYellow')
-        blackButton.classList.remove('colorYellow')
-        rainbowButton.classList.add('colorYellow')
 
-
-        colorToggle();
-        console.log(color)
-
-        const selectorBox = document.querySelectorAll(".boxClass")
-
-            for(let i = 0; i < selectorBox.length; i++){  
-                if (color === 'rainbow'){
-                    console.log('rainbowOn')
-                    selectorBox[i].addEventListener('mouseover', () =>{
-                    selectorBox[i].style.cssText = `background-color: ${randomColor()}`
-            }); 
-
-            } else {
-                    console.log('rainbowOff')
-                    selectorBox[i].removeEventListener('mouseover', () =>{
-                    selectorBox[i].style.cssText = `background-color: ${randomColor()}`
-            }); 
-
-            }
-        }
-        
-    }
 
 
 
@@ -183,7 +186,8 @@ function modeErase(){
 
     }
 }
-        
+ 
+//This only removes black. not rainbow.
 
 function activateClear(){
     const selectorBox = document.querySelectorAll('.boxClass')
@@ -194,6 +198,9 @@ function activateClear(){
     }
 
 }
+
+
+//This works fine. leave it be.
 
 function toggleBorder(){
 
@@ -220,9 +227,12 @@ function toggleBorder(){
     }
 }
 
-blackButton.addEventListener('click', modeBlack)
+
+
+
+blackButton.addEventListener('click', colorToggleBlack)
 eraserButton.addEventListener('click',modeErase)
 borderButton.addEventListener('click',toggleBorder)
 clearButton.addEventListener('click', activateClear)
-rainbowButton.addEventListener('click', modeRainbow)
+rainbowButton.addEventListener('click', colorToggleRainbow)
 
