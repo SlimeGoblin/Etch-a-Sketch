@@ -12,31 +12,46 @@
 </head>
 <body>
     <script src = "java.js" defer></script>
+   
+    <div class="bigContainer">
+        <h1> ETCH-A-SKETCH</h1>
     <div class="etchSketch">
-        <div id="gridContainer">
-        </div>
 
-        
-        
         <div class="buttonContainer">
             <div class="slidecontainer">
                 <div id="choseSize">Chose Grid Size</div>
                     <input type="range" min="1" max="100" value="16" class="slider" id="myRange">
                 <div id="demo"></div>
                 </div>
-            <button class="blackButton">Black</button>
-            <button class="rainbowButton">Rainbow</button>
-            <button class="eraserButton">Eraser</button>
-            <button class="clearButton">Clear</button>
-            <button class="borderButton">Toggle Grid</button>
-            
+            <button class="blackButton" id="button">Black</button>
+            <button class="rainbowButton" id="button">Rainbow</button>
+
+            <div class ="pickContainer">
+                    <input type="color" id="colorPickerID">
+                    <div id="showColor"></div>
 
             </div>
+            <button class="eraserButton" id="button">Eraser</button>
+            <button class="clearButton" id="button">Clear</button>
+            <button class="borderButton" id="button">Toggle Grid</button>
+
+            
+
         </div>
 
+        <div id="gridContainer">
+        </div>
 
+    
+        
+       
     </div>
-    
-    
+
+    <div class="foot">The Odin Project &#169    Project by: Joe Sherman-Williams</div>
+    </div>
+
+
+
+
 </body>
 </html>

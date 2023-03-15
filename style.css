@@ -18,7 +18,6 @@
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .2s;
   }
   
@@ -29,69 +28,111 @@
   
   /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
   .slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
     appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #04AA6D; /* Green background */
+    width: 25px; 
+    height: 25px; 
+    background: #000000; /* Green background */
     cursor: pointer; /* Cursor on hover */
   }
   
   .slider::-moz-range-thumb {
     width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #04AA6D; /* Green background */
+    height: 25px; 
     cursor: pointer; /* Cursor on hover */
   }
 
+body {
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+}
+
+h1{
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color:white;
+  padding-top: 30px;
+}
+
+
 .etchSketch{
     display: flex;
-
-    flex-direction: column;
-
+    justify-content: center;
+    gap: 30px;
     justify-content: center;
     align-items: center;
+    border-radius: 20px;
+}
+
+.bigContainer{
+  background-color: rgb(250, 68, 68);
+  border-radius: 30px;
+  width: 1000px;
+  justify-content: center;
 }
 
 
 #gridContainer{
     display: grid;
-
-    
+    background-color: white;
+;
     grid-template-columns: repeat(var(--size),1fr);
-
-
     width: 700px;
-
     height: 700px;
+}
 
+.foot{
+  text-align: center;
+  padding: 5px;
 }
 
 .buttonContainer{
     display: flex;
+    flex-direction: column;
+    height: 700px;
     gap: 60px;
-    padding: 40px;
     align-items: center;
-    width: 100px;
-    height: 35px;
     justify-content: center;
+    background-color: rgb(105, 89, 15);
+    border-radius: 8px;
+}
+
+#button:hover{
+  background-color: yellow;
+}
+#colorPickerID:hover{
+  background-color: yellow;
+}
+
+#button{
+  border-radius: 8px;
+  width: 90px;
+  height: 30px;
+}
+#colorPickerID{
+  border-radius: 8px;
+  width: 90px;
+  height: 30px;
 }
 
 
 
 .boxClass {
-    border: 2px solid black;
+    border: 2px solid black; 
 }
 
 
 .colorBlack{
-    background-color: black; 
+    background-color: black;
 }
 
 .colorRainbow{
     background-color: var(--rainbow );
 }
 
+.borderWhite{
+  border: none;
+}
 
 .colorYellow{
     background-color: yellow;
@@ -100,6 +141,3 @@
 .colorWhite{
     background-color: white;
 }
-
-
-
