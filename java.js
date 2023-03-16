@@ -1,8 +1,7 @@
-/* TODO: 
-1) Make it so click/click drag is what makes you color
-*/
+
 var color = ''
 var userColor =''
+var clickOn =''
 
 //Get Slider Input
 
@@ -22,6 +21,8 @@ color = 'myColor'
 function getColor(){
     return (colorWheel.value)
 }
+
+
 
 
 //Grid Properties to CSS Grid and Border Toggle Variable 
@@ -82,6 +83,12 @@ function makeGrid(n){
 makeGrid(gridSize)
 
 
+grid.addEventListener('click', ()=>{
+    clickOn = !clickOn
+    console.log (clickOn)
+});
+
+
 
 //Color Toggles so that colorPicker knows what to chose
 
@@ -136,24 +143,24 @@ function pickColor(){
 
     for(let i = 0; i < selectorBox.length; i++){
 
-        selectorBox[i].addEventListener('mouseover', ()=>{
+        selectorBox[i].addEventListener('mousemove', ()=>{
 
-            if(color === 'black'){
+            if(color === 'black' && clickOn){
 
         selectorBox[i].style.cssText = `background-color: ${color}`
         }
 
-            if (color === 'rainbow'){
+            if (color === 'rainbow' && clickOn){
 
         selectorBox[i].style.cssText = `background-color: ${randomColor()}`
             }
 
-            if(color ==='erase'){
+            if(color ==='erase' && clickOn){
 
         selectorBox[i].style.cssText = 'background-color: white'
             }
 
-            if (color === `myColor`){
+            if (color === `myColor` && clickOn){
 
         selectorBox[i].style.cssText = `background-color: ${getColor()}`
             }
