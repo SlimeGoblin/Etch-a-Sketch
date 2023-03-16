@@ -1,12 +1,12 @@
 /* TODO: 
-1) Custome Color not functioning yet
-2) Make it so click/click drag is what makes you color
-3) Make it so when you hover over the grid it shows a shadow
-4) Try to add custome fonts
+1) Make it so click/click drag is what makes you color
+2) Make it so when you hover over the grid it shows a shadow
+3) Try to add custome fonts
 */
 
 
 var color = ''
+var userColor =''
 
 
 
@@ -24,8 +24,13 @@ var JavaShowColor = document.getElementById("showColor")
 colorWheel.oninput = function (){
 
 JavaShowColor.innerHTML = `${colorWheel.value}`
+color = 'myColor'
 
 
+}
+
+function getColor(){
+    return (colorWheel.value)
 }
 
 
@@ -90,7 +95,6 @@ makeGrid(gridSize)
 
 //Color Toggles so that colorPicker knows what to chose
 
-var color = ''
 
 
 function colorToggleBlack (){
@@ -161,9 +165,9 @@ function pickColor(){
         selectorBox[i].style.cssText = 'background-color: white'
             }
 
-            if (color === 'pick'){
+            if (color === `myColor`){
 
-        selectorBox[i].style.cssText = `background-color: ${userColor}`
+        selectorBox[i].style.cssText = `background-color: ${getColor()}`
             }
         });
 
@@ -176,9 +180,7 @@ function randomColor(){
     return `rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`      
 }
 
-function userColor(){
 
-}
 
 
 
