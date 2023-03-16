@@ -1,14 +1,9 @@
 /* TODO: 
 1) Make it so click/click drag is what makes you color
-2) Make it so when you hover over the grid it shows a shadow
-3) Try to add custome fonts
+2) Try to add custome fonts
 */
-
-
 var color = ''
 var userColor =''
-
-
 
 //Get Slider Input
 
@@ -22,11 +17,7 @@ var colorWheel = document.getElementById("colorPickerID")
 var JavaShowColor = document.getElementById("showColor")
 
 colorWheel.oninput = function (){
-
-JavaShowColor.innerHTML = `${colorWheel.value}`
 color = 'myColor'
-
-
 }
 
 function getColor(){
@@ -132,13 +123,11 @@ function colorTogglePick(){
     blackButton.classList.remove('colorYellow')
     rainbowButton.classList.remove('colorYellow')
     pickButton.classList.add('colorYellow')
+    clearButton.classList.remove('colorYellow')
 
     pickColor();
 
 }
-
-
-
 
 function pickColor(){
 
@@ -181,19 +170,20 @@ function randomColor(){
 }
 
 
-
-
-
 function activateClear(){
     const selectorBox = document.querySelectorAll('.boxClass')
+
+    eraserButton.classList.remove('colorYellow')
+    blackButton.classList.remove('colorYellow')
+    rainbowButton.classList.remove('colorYellow')
+    pickButton.classList.remove('colorYellow')
+
 
     for (let i = 0; i < selectorBox.length; i++){
         selectorBox[i].style.cssText = `background-color: white`;
 
     }
-
 }
-
 
 /* Grid Toggle */
 
@@ -225,7 +215,6 @@ function toggleBorder(){
     }
 }
 
-
 //Button Listeners
 
 blackButton.addEventListener('click', colorToggleBlack)
@@ -234,4 +223,3 @@ borderButton.addEventListener('click',toggleBorder)
 clearButton.addEventListener('click', activateClear)
 rainbowButton.addEventListener('click', colorToggleRainbow)
 pickButton.addEventListener('click', colorTogglePick)
-

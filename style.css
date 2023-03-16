@@ -81,6 +81,10 @@ h1{
     height: 700px;
 }
 
+.boxClass:hover{
+  background-color: grey;
+}
+
 .foot{
   text-align: center;
   padding: 5px;
@@ -98,7 +102,7 @@ h1{
 }
 
 #button:hover{
-  background-color: yellow;
+  border: solid yellow;
 }
 #colorPickerID:hover{
   background-color: yellow;
@@ -135,8 +139,12 @@ h1{
   border: none;
 }
 
-.colorYellow{
-    background-color: yellow;
+.colorYellow#button{ 
+    background-color: yellow; 
+}
+
+.colorYellow#colorPickerID{
+  background-color: yellow;
 }
 
 .colorWhite{
