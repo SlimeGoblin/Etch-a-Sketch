@@ -63,6 +63,8 @@ const rainbowButton= document.querySelector(".rainbowButton")
 
 const pickButton = document.querySelector("#colorPickerID")
 
+const instructions = document.querySelector(".instructions")
+
 
 function makeGrid(n){
 
@@ -229,3 +231,6 @@ borderButton.addEventListener('click',toggleBorder)
 clearButton.addEventListener('click', activateClear)
 rainbowButton.addEventListener('click', colorToggleRainbow)
 pickButton.addEventListener('click', colorTogglePick)
+instructions.addEventListener('click', ()=>{
+    alert('Chose a color to start. Click to start coloring, click again to stop')
+})
