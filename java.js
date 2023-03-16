@@ -1,4 +1,9 @@
-//Attempt to Manipulate background instead of listener
+/* TODO: 
+1) Custome Color not functioning yet
+2) Make it so click/click drag is what makes you color
+3) Make it so when you hover over the grid it shows a shadow
+4) Try to add custome fonts
+*/
 
 
 var color = ''
@@ -188,7 +193,7 @@ function activateClear(){
 }
 
 
-/* Grid Toggle  todo: After toggling grid; eraser erases the border */
+/* Grid Toggle */
 
 function toggleBorder(){
 
@@ -212,6 +217,7 @@ function toggleBorder(){
         borderButton.classList.remove('colorYellow')
         for(let i =0; i<selectorBox.length; i++){
             selectorBox[i].style.border = '2px solid black'
+            selectorBox[i].classList.remove('borderWhite')
     
         }
     }
