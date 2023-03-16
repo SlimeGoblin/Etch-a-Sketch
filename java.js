@@ -1,6 +1,5 @@
 /* TODO: 
 1) Make it so click/click drag is what makes you color
-2) Try to add custome fonts
 */
 var color = ''
 var userColor =''

@@ -1,4 +1,9 @@
 
+@font-face {
+  font-family: "Rondo";
+  src: url(../Etch-a-Sketch/rondo.ttf) 
+}
+
 
 
 .slidecontainer {
@@ -52,6 +57,9 @@ h1{
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color:white;
   padding-top: 30px;
+  font-family: "Rondo";
+  color: gold;
+  font-size: 40px;
 }
 
 
