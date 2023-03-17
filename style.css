@@ -18,8 +18,8 @@
   .slider {
 
     appearance: none;
-    width: 200px; /* Full-width */
-    height: 25px; /* Specified height */
+    width: 150px; 
+    height: 25px; 
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
@@ -31,13 +31,13 @@
     opacity: 1; /* Fully shown on mouse-over */
   }
   
-  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  /* The slider handle  */
   .slider::-webkit-slider-thumb {
     appearance: none;
     width: 25px; 
     height: 25px; 
-    background: #000000; /* Green background */
-    cursor: pointer; /* Cursor on hover */
+    background: #000000; 
+    cursor: pointer; 
   }
   
   .slider::-moz-range-thumb {
@@ -108,6 +108,8 @@ h1{
     justify-content: center;
     background-color: rgb(216, 186, 50);
     border-radius: 8px;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 #button:hover{
@@ -117,6 +119,8 @@ h1{
   background-color: yellow;
 }
 
+
+
 #button{
   border-radius: 8px;
   width: 150px;
@@ -125,8 +129,12 @@ h1{
 }
 #colorPickerID{
   border-radius: 8px;
-  width: 90px;
+  width: 150px;
   height: 30px;
+}
+
+#showColor{
+  text-align: center;
 }
 
 

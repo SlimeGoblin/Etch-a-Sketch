@@ -1,7 +1,12 @@
+/* TODO:
+1) Would be nice if ran on mobile
+*/
+
 
 var color = ''
 var userColor =''
-var clickOn =''
+var clickOn = false
+
 
 //Get Slider Input
 
@@ -70,6 +75,7 @@ function makeGrid(n){
 
 
     grid.innerHTML = ''
+
 
     for (let i = 0; i < (n*n); i++){
 
@@ -218,10 +224,13 @@ function toggleBorder(){
         for(let i =0; i<selectorBox.length; i++){
             selectorBox[i].style.border = '2px solid black'
             selectorBox[i].classList.remove('borderWhite')
-    
+
         }
     }
 }
+
+
+colorToggleBlack();
 
 //Button Listeners
 
