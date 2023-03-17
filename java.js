@@ -73,13 +73,19 @@ const instructions = document.querySelector(".instructions")
 
 function makeGrid(n){
 
+    blackButton.classList.remove('colorYellow')
+    rainbowButton.classList.remove('colorYellow')
+    eraserButton.classList.remove('colorYellow')
+    pickButton.classList.remove('colorYellow')
+
 
     grid.innerHTML = ''
 
 
     for (let i = 0; i < (n*n); i++){
 
-            
+
+
         const newBox = document.createElement('div')
         newBox.classList.add("boxClass")
 
@@ -89,6 +95,7 @@ function makeGrid(n){
 }
 
 makeGrid(gridSize)
+
 
 
 grid.addEventListener('click', ()=>{
